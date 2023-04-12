@@ -56,6 +56,7 @@ if ($cmd) {
         #cwd {
             display: flex;
             color: var(--accent-color);
+            white-space: nowrap;
         }
         #cwd:after {
             content: ":";
@@ -82,7 +83,9 @@ if ($cmd) {
         hr {
             margin-top: 1rem;
         }
-
+        pre {
+            white-space: pre-wrap;
+        }
         pre > strong {
             color: var(--accent-color);
         }
